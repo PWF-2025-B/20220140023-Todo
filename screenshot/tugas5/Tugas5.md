@@ -1,7 +1,7 @@
 ##Tugas 5
 
 ## 1. Todo Create
-![alt text](ScreenshotCreate-2.png)
+![alt text](ScreenshotCreate-1.png)
 
 
 ## 2. Todo Created
@@ -10,7 +10,7 @@
 
 
 ## 3. Todo Search
-![alt text](<Screenshot Search-1.png>)
+![alt text](<Screenshot Search.png>)
 
 
 
