@@ -57,7 +57,7 @@
                                 </td>
                                 <td class="px-6 py-4"> 
                                     @if ($todo->is_done==false)
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+                                        <span class="text-blue-500 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-200">
                                             Ongoing
                                         </span>
                                     @else
@@ -67,21 +67,55 @@
                                     @endif
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="flex space-x-3">
-                                        {{-- Action Here --}}
-                                    </div>
-                                </td>
+    <div class="flex space-x-3">
+        @if ($todo->is_done == false)
+            <form action="{{ route('todo.complete', $todo) }}" method="POST">
+                @csrf
+                @method('PATCH')
+                <button type="submit" class="text-green-600 dark:text-green-400">
+                    Complete
+                </button>
+            </form>
+        @else
+            <form action="{{ route('todo.uncomplete', $todo) }}" method="POST">
+                @csrf
+                @method('PATCH')
+                <button type="submit" class="text-blue-600 dark:text-blue-400">
+                    Uncomplete
+                </button>
+            </form>
+        @endif
+        <form action="{{ route('todo.destroy', $todo) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="text-red-600 dark:text-red-400">
+                Delete
+            </button>
+        </form>
+    </div>
+</td>
                             </tr>
                         @empty
                             <tr class="bg-white dark:bg-gray-800">
                                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white">
                                     Empty
-                                </td>
+                                </td> 
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
             </div>
+            @if ($todosCompleted > 1)
+            <div class="p-6 text-xl text-gray-900 dark:text-gray-100">
+                <form action="{{ route('todo.deleteallcompleted') }}" method="Post">
+                    @csrf
+                    @method('delete')
+                    <x-primary-button>
+                        Delete All Completed Task
+                    </x-primary-button>
+                </form>
+            </div>
+            @endif
             </div>
         </div>
     </div>
