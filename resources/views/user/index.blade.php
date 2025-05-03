@@ -62,10 +62,10 @@
                         <tbody>
                             @forelse ($users as $user)
                                 <tr class="odd:bg-white odd:dark:bg-gray-800 even:bg-gray-50 even:dark:bg-gray-700">
-                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <td class="px-6 py-4 font-medium text-white whitespace-nowrap dark:text-gray-900">
                                         {{ $user->id }}
                                     </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                                    <td class="px-6 py-4 font-medium text-white dark:text-gray-900">
                                         {{ $user->name }}
                                     </td>
                                     <td class="hidden px-6 py-4 md:block">
@@ -119,7 +119,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="px-6 py-4 text-center text-gray-500 dark:text-gray-300">
+                                    <td colspan="5" class="px-6 py-4 text-center text-white dark:text-gray-900">
                                         No users found.
                                     </td>
                                 </tr>
