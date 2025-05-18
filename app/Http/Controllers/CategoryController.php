@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -16,17 +17,12 @@ class CategoryController extends Controller
     /**
      * Display a listing of the categories.
      */
-    public function index(): View
-    {
-        $categories = Category::where('user_id', auth()->user()->id)->get();
-        $todoCount = [];
-        
-        foreach ($categories as $category) {
-            $todoCount[$category->id] = $category->todos->count();
-        }
-        
-        return view('category.index', compact('categories', 'todoCount'));
-    }
+    public function index()
+{
+    $categories = Category::with('todos')->where('user_id', Auth::id())->get();
+    return view('category.index', compact('categories'));
+}
+
 
     /**
      * Show the form for creating a new category.
